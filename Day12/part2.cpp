@@ -1,11 +1,15 @@
 #include <iostream>
 #include <algorithm>
+#include <chrono>
 #include <cmath>
 #include <fstream>
 #include <vector>
 #include <sstream>
 #include <set>
 #include <map>
+
+using namespace std::chrono;
+auto start = high_resolution_clock::now();
 
 bool is_upper(const std::string &s) {
     for (auto x : s)
@@ -55,6 +59,9 @@ int main() {
         std::cout << count(paths, cache) << std::endl;
         
     }
+    auto stop = high_resolution_clock::now();
+    std::cout << "Execution time: " << duration_cast<microseconds>(stop - start).count() / 1000 << " miliseconds" << std::endl;
+    //13.35 seconds
     file.close();
     return 0;
 }
